@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Button
+        android:id="@+id/buttonEdit"
+        android:layout_width="208dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="176dp"
+        android:onClick="editStats"
+        android:text="Edit" />
+
+    <Button
+        android:id="@+id/buttonView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="209dp"
+        android:onClick="viewStats"
+        android:text="View" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="459dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/editText7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Date"
+                android:inputType="textPersonName" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="162dp"
+                    android:layout_height="62dp"
+                    android:layout_weight="1"
+                    android:text="TextView" />
+
+                <EditText
+                    android:id="@+id/editTextFirstServeMade"
+                    android:layout_width="145dp"
+                    android:layout_height="62dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="right"
+                    android:layout_toEndOf="@+id/textViewFirstServeMade"
+                    android:inputType="number"
+                    android:text="First" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="240dp"
+                    android:layout_height="63dp"
+                    android:layout_weight="1"
+                    android:text="TextView" />
+
+                <EditText
+                    android:id="@+id/editTextSecondServeMade"
+                    android:layout_width="143dp"
+                    android:layout_height="62dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_below="@+id/editTextFirstServeMade"
+                    android:layout_gravity="right"
+                    android:layout_toEndOf="@+id/textViewFirstServeMade"
+                    android:inputType="number"
+                    android:text="Second" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="240dp"
+                    android:layout_height="63dp"
+                    android:layout_weight="1"
+                    android:text="TextView" />
+
+                <EditText
+                    android:id="@+id/editTextDoubleFaults"
+                    android:layout_width="145dp"
+                    android:layout_height="57dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_below="@+id/editTextSecondServeMade"
+                    android:layout_gravity="right"
+                    android:layout_toEndOf="@+id/textViewFirstServeMade"
+                    android:inputType="number"
+                    android:text="Double" />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:text="Mark where and how many forehand errors your made" />
+
+            <ImageView
+                android:id="@+id/imageViewTennisCourtMisses"
+                android:layout_width="326dp"
+                android:layout_height="287dp"
+                android:layout_below="@+id/editTextDoubleFaults"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:src="@drawable/tenniscourthalf" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:text="Mark where and how many winners you made" />
+
+            <ImageView
+                android:id="@+id/imageViewTennisCourtWinners"
+                android:layout_width="326dp"
+                android:layout_height="287dp"
+                android:layout_below="@+id/editTextDoubleFaults"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:src="@drawable/tenniscourthalf" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

@@ -1,5 +1,6 @@
 package com.shrikode.sportsanalytics;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,12 +13,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-
-
+    /**
     public void tennisStats(View view){
 
         Button buttonEdit = findViewById(R.id.buttonEdit);
@@ -178,11 +182,47 @@ public class MainActivity extends AppCompatActivity {
         //editStatsList.setVisibility(View.INVISIBLE);
 
     }
+     */
 
+    //private LineGraphSeries<DataPoint> series;
+
+    public void viewStats(View view){
+
+        setContentView(R.layout.view_stats);
+    }
+
+    public void editStats(View view){
+        setContentView(R.layout.edit_stats);
+    }
+
+
+
+    LineGraphSeries<DataPoint> series;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        double y,x;
+        x = -5.0;
+
+        GraphView statsGraph = (GraphView) findViewById(R.id.statsGraph);
+        series = new LineGraphSeries<DataPoint>();
+        for(int i =0; i<100; i++) {
+            x = x + 0.1;
+            y = Math.sin(x);
+            series.appendData(new DataPoint(x, y), true, 99);
+            System.out.println(series.getHighestValueX());
+        }
+        //System.out.println(series.getHighestValueX());
+        if(!series.equals(null))
+        {
+            System.out.println("Fail");
+            statsGraph.addSeries(series);
+
+        }
+
+
     }
 }
