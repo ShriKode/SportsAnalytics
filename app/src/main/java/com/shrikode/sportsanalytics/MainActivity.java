@@ -21,180 +21,86 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    /**
-    public void tennisStats(View view){
+    private static final String TAG = "MainActivity";
 
-        Button buttonEdit = findViewById(R.id.buttonEdit);
-        Button buttonView = findViewById(R.id.buttonView);
-        Button buttonTennis = findViewById(R.id.buttonTennis);
-        Button buttonBasketball = findViewById(R.id.buttonBasketball);
-        Button buttonFootball= findViewById(R.id.buttonFootball);
-        buttonEdit.setVisibility(View.VISIBLE);
-        buttonView.setVisibility(View.VISIBLE);
-        buttonTennis.setVisibility(View.INVISIBLE);
-        buttonBasketball.setVisibility(View.INVISIBLE);
-        buttonFootball.setVisibility(View.INVISIBLE);
+    com.shrikode.sqldemo.DatabaseHelper mDatabaseHelper;
+    private Button btnAdd, btnViewData;
+    private EditText editText;
 
-        ImageView statsGraph = findViewById(R.id.statsGraph);
-        statsGraph.setVisibility(View.VISIBLE);
-
-        ListView statsList = findViewById(R.id.statsList);
-        statsList.setVisibility(View.VISIBLE);
-
-
-        ArrayList<Integer> numList = new ArrayList<Integer>();
-        numList.add(1);
-        numList.add(2);
-        numList.add(3);
-        numList.add(4);
-        numList.add(5);
-        numList.add(6);
-        numList.add(7);
-        numList.add(8);
-        numList.add(9);
-
-
-        ArrayAdapter<Integer> arrayAdapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_list_item_1, numList );
-
-        statsList.setAdapter(arrayAdapter);
-
-
-    }
-
-    public void editStats( View view){
-        ImageView statsGraph = findViewById(R.id.statsGraph);
-        statsGraph.setVisibility(View.INVISIBLE);
-
-        ListView statsList = findViewById(R.id.statsList);
-        statsList.setVisibility(View.INVISIBLE);
-
-        TextView textViewDate = findViewById(R.id.textViewDate);
-        textViewDate.setText("Today's Date");
-
-        TextView textViewFirstServeMade = findViewById(R.id.textViewFirstServeMade);
-        textViewFirstServeMade.setVisibility(View.VISIBLE);
-
-        TextView textViewSecondServeMade = findViewById(R.id.textViewSecondServeMade);
-        textViewSecondServeMade.setVisibility(View.VISIBLE);
-
-        TextView textViewDoubleFaults = findViewById(R.id.textViewDoubleFaults);
-        textViewDoubleFaults.setVisibility(View.VISIBLE);
-
-        TextView textViewForehandMissed = findViewById(R.id.textViewForehandMissed);
-        textViewForehandMissed.setVisibility(View.VISIBLE);
-
-        TextView textViewBackhandMissed = findViewById(R.id.textViewBackhandMissed);
-        textViewBackhandMissed.setVisibility(View.VISIBLE);
-
-        TextView textViewWinners = findViewById(R.id.textViewWinners);
-        textViewWinners.setVisibility(View.VISIBLE);
-
-        EditText editTextFirstServeMade = findViewById(R.id.editTextFirstServeMade);
-        editTextFirstServeMade.setVisibility(View.VISIBLE);
-
-        EditText editTextSecondServeMade = findViewById(R.id.editTextSecondServeMade);
-        editTextSecondServeMade.setVisibility(View.VISIBLE);
-
-        EditText editTextDoubleFaults = findViewById(R.id.editTextDoubleFaults);
-        editTextDoubleFaults.setVisibility(View.VISIBLE);
-
-        EditText editTextForehandMissed = findViewById(R.id.editTextForehandMissed);
-        editTextForehandMissed.setVisibility(View.VISIBLE);
-
-        EditText editTextBackhandMissed = findViewById(R.id.editTextBackhandMissed);
-        editTextBackhandMissed.setVisibility(View.VISIBLE);
-
-        EditText editTextWinners = findViewById(R.id.editTextWinners);
-        editTextWinners.setVisibility(View.VISIBLE);
-
-
-    }
-
-    public void viewStats(View view){
-
-        ImageView statsGraph = findViewById(R.id.statsGraph);
-        statsGraph.setVisibility(View.VISIBLE);
-
-        ListView statsList = findViewById(R.id.statsList);
-        statsList.setVisibility(View.VISIBLE);
-
-        int firstServePercentage = 1;
-        int secondServePercentage = 1;
-        int doubleFaults = 1;
-        int forehandsMissed =  1;
-        int backhandsMissed =  1;
-        int winners =  1;
-
-
-        ArrayList<String> viewStatsList = new ArrayList<String>();
-        viewStatsList.add("First Serve Percentage: " + Integer.toString(firstServePercentage) + "%");
-        viewStatsList.add("Second Serve Percentage: " + Integer.toString(secondServePercentage) + "%");
-        viewStatsList.add("Number of Double Faults in Last Match: " + Integer.toString(doubleFaults));
-        viewStatsList.add("Forehand Errors: " + Integer.toString(forehandsMissed));
-        viewStatsList.add("Backhand Errors: " + Integer.toString(backhandsMissed));
-        viewStatsList.add("Winners: " + Integer.toString(winners));
-
-
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, viewStatsList );
-
-        statsList.setAdapter(arrayAdapter);
-
-        TextView textViewDate = findViewById(R.id.textViewDate);
-        textViewDate.setText("Today's Date");
-
-        TextView textViewFirstServeMade = findViewById(R.id.textViewFirstServeMade);
-        textViewFirstServeMade.setVisibility(View.INVISIBLE);
-
-        TextView textViewSecondServeMade = findViewById(R.id.textViewSecondServeMade);
-        textViewSecondServeMade.setVisibility(View.INVISIBLE);
-
-        TextView textViewDoubleFaults = findViewById(R.id.textViewDoubleFaults);
-        textViewDoubleFaults.setVisibility(View.INVISIBLE);
-
-        TextView textViewForehandMissed = findViewById(R.id.textViewForehandMissed);
-        textViewForehandMissed.setVisibility(View.INVISIBLE);
-
-        TextView textViewBackhandMissed = findViewById(R.id.textViewBackhandMissed);
-        textViewBackhandMissed.setVisibility(View.INVISIBLE);
-
-        TextView textViewWinners = findViewById(R.id.textViewWinners);
-        textViewWinners.setVisibility(View.INVISIBLE);
-
-        EditText editTextFirstServeMade = findViewById(R.id.editTextFirstServeMade);
-        editTextFirstServeMade.setVisibility(View.INVISIBLE);
-
-        EditText editTextSecondServeMade = findViewById(R.id.editTextSecondServeMade);
-        editTextSecondServeMade.setVisibility(View.INVISIBLE);
-
-        EditText editTextDoubleFaults = findViewById(R.id.editTextDoubleFaults);
-        editTextDoubleFaults.setVisibility(View.INVISIBLE);
-
-        EditText editTextForehandMissed = findViewById(R.id.editTextForehandMissed);
-        editTextForehandMissed.setVisibility(View.INVISIBLE);
-
-        EditText editTextBackhandMissed = findViewById(R.id.editTextBackhandMissed);
-        editTextBackhandMissed.setVisibility(View.INVISIBLE);
-
-        EditText editTextWinners = findViewById(R.id.editTextWinners);
-        editTextWinners.setVisibility(View.INVISIBLE);
-
-        //ListView editStatsList = findViewById(R.id.editStatsList);
-        //editStatsList.setVisibility(View.INVISIBLE);
-
-    }
-     */
-
-    //private LineGraphSeries<DataPoint> series;
 
     public void viewStats(View view){
 
         setContentView(R.layout.view_stats);
+        ListView statsList = findViewById(R.id.statsList);
+
+        final String[] values = new String[] { "First Serve Percentage", "Second Serve Percentage", "Double Faults",
+                "Errors", "Winners" }; // You have the necessary data to bind the list.
+
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, values); // You have set     the previous array to an adapter that can be now setted to a list.
+
+        statsList.setAdapter(adapter);
     }
 
     public void editStats(View view){
         setContentView(R.layout.edit_stats);
     }
 
+    public void goToCourt(View view)
+    {
+
+        setContentView(R.layout.tennis_court);
+        /**
+
+        EditText firstServesMade = findViewById(R.id.editTextFirstServeMade);
+        int firstServes = Integer.parseInt(firstServesMade.getText().toString());
+        EditText secondServesMade = findViewById(R.id.editTextSecondServeMade);
+        int secondServes = Integer.parseInt(firstServesMade.getText().toString());
+        EditText doubleFaults =  findViewById(R.id.editTextDoubleFaults);
+        int doublefaults = Integer.parseInt(firstServesMade.getText().toString());
+
+        boolean insertData = mDatabaseHelper.addData(firstServes);
+
+        if (insertData) {
+            toastMessage("Data Successfully Inserted!");
+        } else {
+            toastMessage("Something went wrong");
+        }
+         */
+
+    }
+
+    public void submitCourtInfo (View view)
+    {
+        setContentView(R.layout.view_stats);
+
+        /**
+        EditText editTextShortLeft = findViewById(R.id.editTextShortLeft);
+        int shortLeft = Integer.parseInt(editTextShortLeft.getText().toString());
+        EditText editTextShortRight = findViewById(R.id.editTextShortRight);
+        int shortRight = Integer.parseInt(editTextShortRight.getText().toString());
+        EditText editTextDeepLeft =  findViewById(R.id.editTextDeepLeft);
+        int doublefaults = Integer.parseInt(editTextDeepLeft.getText().toString());
+        EditText editTextDeepRight =  findViewById(R.id.editTextDeepRight);
+        int deepRight = Integer.parseInt(editTextDeepLeft.getText().toString());
+
+        boolean insertData = mDatabaseHelper.addData(shortLeft);
+
+        if (insertData) {
+            toastMessage("Data Successfully Inserted!");
+        } else {
+            toastMessage("Something went wrong");
+        }
+         */
+    }
+
+    /**
+     * customizable toast
+     * @param message
+     */
+    private void toastMessage(String message){
+        Toast.makeText(this,message, Toast.LENGTH_SHORT).show();
+    }
 
 
     LineGraphSeries<DataPoint> series;
@@ -219,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         if(!series.equals(null))
         {
             System.out.println("Fail");
-            statsGraph.addSeries(series);
+            //statsGraph.addSeries(series);
 
         }
 
